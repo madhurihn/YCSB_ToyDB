@@ -58,7 +58,7 @@ public class ToyDBClient extends DB {
   public Status read(String table, String key, Set<String> fields,
       Map<String, ByteIterator> result) {
     try {
-      String url = "http://localhost:8080/readLog?SvId=primary&type=log&table=User&key="+key+"&";
+      String url = "http://localhost:7310/docs/index.html/readLog?SvId=primary&table=User&key="+key+"&";
       if(fields!=null){
         for (String field: fields){
           url+="fields="+field+"&";
@@ -95,7 +95,7 @@ public class ToyDBClient extends DB {
       Map<String, ByteIterator> values) {
     try {
       Map<String, String> map = StringByteIterator.getStringMap(values);
-      String url = "http://localhost:8080/insertLog?SvId=primary&type=log&table=User&key="+key+"&";
+      String url = "http://localhost:7310/docs/index.html/insertLog?SvId=primary&type=table=User&key="+key+"&";
       for (Map.Entry<String, String> field : map.entrySet()){
         url+=field.getKey()+"="+URLEncoder.encode(field.getValue(), "UTF-8")+"&";
       }
@@ -120,7 +120,7 @@ public class ToyDBClient extends DB {
   @Override
   public Status delete(String table, String key) {
     try {
-      String url = "http://localhost:8080/deleteLog?SvId=primary&type=log&table=User&key="+key;
+      String url = "http://localhost:7310/docs/index.html/deleteLog?SvId=primary&table=User&key="+key;
       URL obj;
       HttpURLConnection con = null;
       obj = new URL(url);
@@ -142,7 +142,7 @@ public class ToyDBClient extends DB {
       Map<String, ByteIterator> values) {
     try {
       Map<String, String> map = StringByteIterator.getStringMap(values);
-      String url = "http://localhost:8080/updateLog?SvId=primary&type=log&table=User&key="+key+"&";
+      String url = "http://localhost:7310/docs/index.html/updateLog?SvId=primary&table=User&key="+key+"&";
       for (Map.Entry<String, String> field : map.entrySet()){
         url+=field.getKey()+"="+URLEncoder.encode(field.getValue(), "UTF-8")+"&";
       }
@@ -167,7 +167,7 @@ public class ToyDBClient extends DB {
   public Status scan(String table, String startkey, int recordcount,
       Set<String> fields, Vector<HashMap<String, ByteIterator>> result) {
     try {
-      String url = "http://localhost:8080/scanLog?SvId=primary&type=log&table=User&key=";
+      String url = "http://localhost:7310/docs/index.html/scanLog?SvId=primary&table=User&key=";
       url+=startkey+"&recordCount="+recordcount+"&";
       if (fields!=null){
         for (String field: fields){
