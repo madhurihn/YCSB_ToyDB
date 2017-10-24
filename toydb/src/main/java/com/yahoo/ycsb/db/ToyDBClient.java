@@ -167,7 +167,7 @@ public class ToyDBClient extends DB {
   public Status scan(String table, String startkey, int recordcount,
       Set<String> fields, Vector<HashMap<String, ByteIterator>> result) {
     try {
-      String url = "http://localhost:7310/pairs/scan?key="+key;
+      String url = "http://localhost:7310/pairs/scan?key="+startkey;
       url+=startkey+"&recordCount="+recordcount+"&";
       if (fields!=null){
         for (String field: fields){
