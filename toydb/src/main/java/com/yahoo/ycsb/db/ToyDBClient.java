@@ -104,7 +104,7 @@ public class ToyDBClient extends DB {
       HttpURLConnection con = null;
       obj = new URL(url);
       con = (HttpURLConnection) obj.openConnection();
-      con.setRequestMethod("GET");
+      con.setRequestMethod("POST");
       con.setRequestProperty("Accept", "application/json");
       BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
       in.readLine();
