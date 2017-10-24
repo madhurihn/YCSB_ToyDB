@@ -95,7 +95,7 @@ public class ToyDBClient extends DB {
       Map<String, ByteIterator> values) {
     try {
       Map<String, String> map = StringByteIterator.getStringMap(values);
-      String url = "http://localhost:7310/pairs?key="+key+"&";
+      String url = "http://localhost:7310/pairs/insert?key="+key+"&";
       for (Map.Entry<String, String> field : map.entrySet()){
         url+=field.getKey()+"="+URLEncoder.encode(field.getValue(), "UTF-8")+"&";
       }
