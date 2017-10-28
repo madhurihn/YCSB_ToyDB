@@ -120,7 +120,7 @@ public class ToyDBClient extends DB {
   @Override
   public Status delete(String table, String key) {
     try {
-      String url = "http://localhost:7310/pairs?table=User&key="+key;
+      String url = "http://localhost:7310/pairs/delete?table=User&key="+key;
       URL obj;
       HttpURLConnection con = null;
       obj = new URL(url);
@@ -142,7 +142,7 @@ public class ToyDBClient extends DB {
       Map<String, ByteIterator> values) {
     try {
       Map<String, String> map = StringByteIterator.getStringMap(values);
-      String url = "http://localhost:7310/pairs?key=+key&values={}";
+      String url = "http://localhost:7310/pairs/update?key="+key+"&";
       for (Map.Entry<String, String> field : map.entrySet()){
         url+=field.getKey()+"="+URLEncoder.encode(field.getValue(), "UTF-8")+"&";
       }
@@ -151,7 +151,7 @@ public class ToyDBClient extends DB {
       HttpURLConnection con = null;
       obj = new URL(url);
       con = (HttpURLConnection) obj.openConnection();
-      con.setRequestMethod("GET");
+      con.setRequestMethod("PUT");
       con.setRequestProperty("Accept", "application/json");
       BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
       in.readLine();
