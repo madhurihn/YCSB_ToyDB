@@ -58,7 +58,7 @@ public class ToyDBClient extends DB {
   public Status read(String table, String key, Set<String> fields,
       Map<String, ByteIterator> result) {
     try {
-      String url = "http://localhost:7310/pairs";
+      String url = "http://localhost:7310/pairs/"+key+"?";
       if(fields!=null){
         for (String field: fields){
           url+="fields="+field+"&";
